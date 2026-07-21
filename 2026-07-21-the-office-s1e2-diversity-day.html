@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英文講義｜The Office S1E2 Diversity Day</title>
+<style>
+  :root{
+    --paper:#F6F4ED;
+    --card:#FFFFFF;
+    --ink:#26303E;
+    --ink-soft:#5A6472;
+    --memo-red:#B3352C;
+    --rule-blue:#A8BDD3;
+    --hi:#FFE9A8;
+    --pencil:#8A8F98;
+    --mono:'Courier New', Courier, monospace;
+    --sans:'Noto Sans TC','PingFang TC','Microsoft JhengHei',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    background-image:repeating-linear-gradient(0deg, rgba(0,0,0,0.012) 0 1px, transparent 1px 3px);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.75;
+    padding:28px 16px 80px;
+  }
+  .sheet{max-width:860px;margin:0 auto;}
+
+  /* ===== Memo header ===== */
+  .memo{
+    background:var(--card);
+    border:1px solid #DDD8CB;
+    box-shadow:0 2px 0 rgba(38,48,62,.06), 0 12px 30px rgba(38,48,62,.07);
+    padding:34px 36px 26px;
+    position:relative;
+  }
+  .memo::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:6px;background:var(--memo-red);
+  }
+  .memo .co{
+    font-family:var(--mono);font-weight:bold;letter-spacing:.28em;font-size:12px;
+    color:var(--ink-soft);text-transform:uppercase;
+  }
+  .memo h1{
+    font-family:var(--mono);font-size:clamp(24px,4.6vw,38px);line-height:1.2;
+    letter-spacing:.01em;margin:10px 0 4px;
+  }
+  .memo h1 em{font-style:normal;color:var(--memo-red);}
+  .memo .sub{color:var(--ink-soft);font-size:15px;margin-bottom:18px;}
+  .memo table{
+    width:100%;border-collapse:collapse;font-size:14px;
+    border-top:1px solid #E3DED2;
+  }
+  .memo td{padding:7px 0;border-bottom:1px dashed #E3DED2;vertical-align:top;}
+  .memo td:first-child{
+    font-family:var(--mono);font-weight:bold;letter-spacing:.14em;width:86px;
+    color:var(--memo-red);font-size:12px;padding-top:10px;
+  }
+  .stamp{
+    position:absolute;right:26px;top:26px;transform:rotate(6deg);
+    font-family:var(--mono);font-weight:bold;font-size:11px;letter-spacing:.18em;
+    color:var(--memo-red);border:2px solid var(--memo-red);border-radius:4px;
+    padding:4px 9px;opacity:.75;
+  }
+  @media(max-width:560px){.stamp{display:none;}}
+
+  /* ===== Nav ===== */
+  nav{
+    margin:22px 0 34px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  nav a{
+    font-family:var(--mono);font-size:12.5px;font-weight:bold;letter-spacing:.06em;
+    text-decoration:none;color:var(--ink);
+    background:var(--card);border:1px solid #D8D3C6;border-radius:3px;
+    padding:6px 11px;
+  }
+  nav a:hover{border-color:var(--memo-red);color:var(--memo-red);}
+
+  /* ===== Sections ===== */
+  section{margin-bottom:52px;}
+  .sec-head{
+    display:flex;align-items:baseline;gap:12px;margin-bottom:6px;
+    border-bottom:2px solid var(--ink);padding-bottom:8px;
+  }
+  .sec-head .tag{
+    font-family:var(--mono);font-weight:bold;font-size:11px;letter-spacing:.2em;
+    background:var(--ink);color:var(--paper);padding:3px 8px;border-radius:2px;white-space:nowrap;
+  }
+  .sec-head h2{font-size:clamp(19px,3vw,24px);letter-spacing:.02em;}
+  .sec-note{color:var(--ink-soft);font-size:14px;margin:10px 0 18px;}
+
+  /* ===== Index card (signature element) ===== */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:700px){.cards{grid-template-columns:1fr;}}
+  .icard{
+    background:var(--card);
+    background-image:
+      linear-gradient(transparent 0 34px, var(--memo-red) 34px 35px, transparent 35px),
+      repeating-linear-gradient(transparent 0 27px, rgba(168,189,211,.5) 27px 28px);
+    background-position:0 0, 0 35px;
+    border:1px solid #DBD6C9;border-radius:3px;
+    box-shadow:0 2px 5px rgba(38,48,62,.07);
+    padding:0;
+    break-inside:avoid;
+  }
+  .icard summary{
+    list-style:none;cursor:pointer;padding:6px 14px 4px;min-height:35px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px;
+  }
+  .icard summary::-webkit-details-marker{display:none;}
+  .icard .term{font-weight:700;font-size:16.5px;}
+  .icard .zh{font-size:13px;color:var(--ink-soft);white-space:nowrap;}
+  .icard .flip{
+    font-family:var(--mono);font-size:11px;color:var(--pencil);border:1px solid #D8D3C6;
+    border-radius:2px;padding:1px 6px;flex-shrink:0;
+  }
+  .icard[open] .flip{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+  .icard .body{padding:10px 14px 14px;font-size:14.5px;}
+  .icard .body p{margin-bottom:8px;}
+  .icard .line{
+    font-family:var(--mono);font-size:13.5px;background:var(--hi);
+    padding:1px 5px;border-radius:2px;
+  }
+  .who{
+    font-family:var(--mono);font-size:11px;font-weight:bold;letter-spacing:.1em;
+    color:var(--memo-red);
+  }
+
+  /* culture cards: full-width */
+  .wide .icard{grid-column:1 / -1;}
+  .culture{display:grid;gap:14px;}
+
+  a.ext{color:var(--memo-red);text-decoration:none;border-bottom:1px dashed var(--memo-red);}
+  a.ext:hover{border-bottom-style:solid;}
+  a.ext::after{content:" ↗";font-size:11px;}
+  .wiki-min{font-size:12px;color:var(--pencil);margin-top:6px;}
+  .wiki-min a{color:var(--pencil);}
+
+  /* ===== YouTube video cards ===== */
+  .vids{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0 4px;}
+  @media(max-width:560px){.vids{grid-template-columns:1fr;}}
+  .vid{
+    display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);
+    background:#FBFAF6;border:1px solid #E0DBCE;border-radius:4px;padding:8px;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .vid:hover{border-color:var(--memo-red);box-shadow:0 3px 10px rgba(179,53,44,.12);}
+  .vid .thumb{
+    position:relative;flex-shrink:0;width:118px;aspect-ratio:16/9;border-radius:3px;
+    overflow:hidden;background:var(--ink);
+  }
+  .vid .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .vid .play{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-size:13px;
+  }
+  .vid .play::before{
+    content:"▶";background:rgba(179,53,44,.92);border-radius:50%;
+    width:30px;height:30px;display:flex;align-items:center;justify-content:center;
+    padding-left:3px;box-shadow:0 2px 6px rgba(0,0,0,.35);
+  }
+  .vid .vmeta{display:flex;flex-direction:column;gap:2px;min-width:0;}
+  .vid .vmeta b{font-size:13.5px;line-height:1.4;}
+  .vid .vmeta span{font-size:12px;color:var(--ink-soft);line-height:1.45;}
+  .vid .vmeta .yt{
+    font-family:var(--mono);font-size:10px;font-weight:bold;letter-spacing:.12em;
+    color:var(--memo-red);
+  }
+
+  /* grammar */
+  .gram{background:var(--card);border:1px solid #DBD6C9;border-left:5px solid var(--ink);
+    padding:14px 18px;margin-bottom:12px;border-radius:0 3px 3px 0;font-size:14.5px;}
+  .gram b.pat{font-family:var(--mono);font-size:14px;background:var(--hi);padding:1px 5px;border-radius:2px;}
+
+  /* mishear table */
+  .mh{width:100%;border-collapse:collapse;background:var(--card);border:1px solid #DBD6C9;font-size:14.5px;}
+  .mh th{
+    font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-align:left;
+    background:var(--ink);color:var(--paper);padding:9px 14px;
+  }
+  .mh td{padding:10px 14px;border-top:1px solid #EAE6DA;vertical-align:top;}
+  .mh td:first-child{font-family:var(--mono);color:var(--memo-red);text-decoration:line-through;white-space:nowrap;}
+  .mh td:nth-child(2){font-family:var(--mono);font-weight:bold;white-space:nowrap;}
+
+  /* quiz */
+  .quiz{background:var(--card);border:1px solid #DBD6C9;border-radius:3px;margin-bottom:10px;}
+  .quiz summary{list-style:none;cursor:pointer;padding:12px 16px;font-size:15px;display:flex;gap:10px;}
+  .quiz summary::-webkit-details-marker{display:none;}
+  .quiz .qn{font-family:var(--mono);font-weight:bold;color:var(--memo-red);}
+  .quiz .ans{padding:0 16px 14px 44px;font-size:14.5px;color:var(--ink-soft);}
+  .quiz .ans b{color:var(--ink);}
+
+  .plot{background:var(--card);border:1px dashed var(--pencil);padding:16px 20px;font-size:14.5px;border-radius:3px;}
+  .plot p{margin-bottom:8px;}
+
+  footer{
+    margin-top:60px;text-align:center;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.14em;color:var(--pencil);
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ================= MEMO HEADER ================= -->
+  <header class="memo">
+    <div class="stamp">DIVERSITY&nbsp;TODAY</div>
+    <div class="co">Dunder Mifflin · English Seminar · Scranton Branch</div>
+    <h1>英文觀影講義<br><em>The Office</em> S1E2「Diversity Day」</h1>
+    <div class="sub">多元日 · 2005 · 全六集第一季的第 2 集（也是公認本劇風格定型的一集）</div>
+    <table>
+      <tr><td>TO:</td><td>Katty ＆ 觀影夥伴</td></tr>
+      <tr><td>RE:</td><td>本集聽不懂 / 有中文筆記標記的字詞、片語、文法與文化典故總整理。每張「索引卡」都可以點開看詳解——呼應劇中把種族卡片貼在額頭上的橋段。</td></tr>
+      <tr><td>NOTE:</td><td>本集的笑點幾乎都建立在「Michael 自以為在推廣多元，實際上句句踩雷」的反諷上。看懂反諷 ＝ 看懂這一集。</td></tr>
+    </table>
+  </header>
+
+  <nav>
+    <a href="#plot">① 劇情脈絡</a>
+    <a href="#culture">② 文化典故</a>
+    <a href="#vocab">③ 單字片語卡</a>
+    <a href="#grammar">④ 文法角落</a>
+    <a href="#mishear">⑤ 聽力糾錯</a>
+    <a href="#quiz">⑥ 隨堂小測</a>
+  </nav>
+
+  <!-- ================= PLOT ================= -->
+  <section id="plot">
+    <div class="sec-head"><span class="tag">01</span><h2>先搞懂兩條劇情線</h2></div>
+    <div class="plot">
+      <p><b>主線：兩場多元日訓練。</b>Michael 之前在辦公室模仿 Chris Rock 的種族笑話，被同事向總部（corporate）申訴，所以總部派來講師 Mr. Brown 開強制課程。Mr. Brown 私下告訴 Michael：其實整場只需要「你一個人」的簽名——發給大家只是為了不讓他丟臉。Michael 惱羞成怒，簽了卡通名字「Daffy Duck」，下午自己加開一場「Diversity Tomorrow」，結果把一切搞得更糟：叫大家把種族卡片貼在額頭上互相講刻板印象，最後對 Kelly 模仿印度口音，被甩了一巴掌。</p>
+      <p><b>副線：Jim 的年度大單。</b>Jim 每年只要打一通電話跟客戶 Mr. Deckard 續約，這一單就佔他全年佣金的 25%。但他整天被打斷（Dwight 碎紙機、被抓去上課），拖到下班前回電時，客戶已經跟「另一位業務」（就是 Dwight）成交了，對方還給了折扣。Jim 只能苦笑說 I don't blame you（我不怪你）。</p>
+      <p><b>結尾：</b>Pam 累到睡著、靠在 Jim 肩上。丟了大單的 Jim 對鏡頭說「Not a bad day.」——這是 Jim–Pam 感情線最早的糖之一。</p>
+    </div>
+  </section>
+
+  <!-- ================= CULTURE ================= -->
+  <section id="culture">
+    <div class="sec-head"><span class="tag">02</span><h2>文化典故卡</h2></div>
+    <p class="sec-note">這一集不懂典故就笑不出來。每張卡點開有解釋＋可以直接點的影片。</p>
+    <div class="culture">
+
+      <details class="icard" open><summary><span class="term">🎬 先重看本集片段</span><span class="zh">官方頻道剪輯</span><span class="flip">收合</span></summary>
+        <div class="body">
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=tsHFNO9I_Nk" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/tsHFNO9I_Nk/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE · TBS 官方</span><b>Michael Scott Celebrates Diversity Day</b><span>Michael 不斷打斷 Mr. Brown 的上午場</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=AAYrkc51x3A" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/AAYrkc51x3A/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE · TBS 官方</span><b>Michael Hosts a Diversity Day Game</b><span>額頭卡片遊戲：復習所有刻板印象梗</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=FVXGnXgL-dI" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/FVXGnXgL-dI/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>Diversity Day — Mr. Brown 講習片段</b><span>Larry Wilmore 客串的正版訓練橋段</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=W5RhL7TupBM" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/W5RhL7TupBM/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>Try My Cookie Cookie → 被 Kelly 打巴掌</b><span>結尾名場面（那個聽不清楚的詞是 Michael 亂編的食物名，各家字幕拼法不一）</span></span>
+            </a>
+          </div>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Chris Rock 的爭議段子</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>整集的導火線。Chris Rock 是美國最具代表性的黑人脫口秀演員之一，1996 年特輯《Bring the Pain》裡有一段極具爭議的段子，大意是「黑人社群裡有兩種人，彼此互看不順眼」。這段子由黑人講是經典，由白人上司 Michael 在辦公室「一字不差、同樣的 comedic timing（喜劇節奏）」重演，就成了職場申訴案。Michael 完全不懂差別在哪，還委屈地問：是因為我是白人嗎？</p>
+          <p>後段 Michael 又提到另一個 Chris Rock 段子：以 Martin Luther King 命名的街道，治安反而常常比較差（出自 1999 年特輯《Bigger &amp; Blacker》）——他說「我不會講這段」，但其實已經講了一半，又是同一種踩雷。</p>
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=f3PJF0YE-x4" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/f3PJF0YE-x4/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>Chris Rock 的原版爭議段子</b><span>Bring the Pain (1996)：Michael 模仿的就是這段。⚠️ 內含大量粗話與 N-word</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=coC4t7nCGPs" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/coC4t7nCGPs/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>Bring the Pain 完整特輯</b><span>讓 Chris Rock 封神的一小時，聽力進階挑戰用</span></span>
+            </a>
+          </div>
+          <p class="wiki-min">補充：<a href="https://en.wikipedia.org/wiki/Chris_Rock:_Bring_the_Pain" target="_blank">Bring the Pain（Wikipedia）</a></p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Oprah moment</span><span class="zh">歐普拉時刻</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>Oprah Winfrey 的脫口秀是美國日間電視的代名詞，最出名的就是來賓當場落淚、擁抱、和解的煽情高潮。Michael 抱怨 Mr. Brown 的課「沒有心、沒有眼神交流」，反問 <span class="line">Where was my Oprah moment?</span>——意思是他期待的是一場讓大家痛哭流涕、心靈相通的感人大會，而不是簽簽表格。所以他下午揚言要 <span class="line">have you all in tears</span>（讓你們全部哭出來）。</p>
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=pviYWzu0dzk" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/pviYWzu0dzk/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>「You get a car!」名場面</b><span>2004 年 Oprah 送全場觀眾一人一台車，美國電視史最著名的 Oprah moment</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=yjdueE1Qugg" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/yjdueE1Qugg/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE · PEOPLE</span><b>送車事件的幕後故事</b><span>了解為什麼這一幕成為美國流行文化的梗</span></span>
+            </a>
+          </div>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Daffy Duck</span><span class="zh">達菲鴨（不是 Donkey Duck！）</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>華納兄弟《樂一通》(Looney Tunes) 的經典卡通角色「達菲鴨」。在需要簽名的正式文件上簽卡通人物的名字，是美國人表達「我根本不當一回事」的惡搞方式。Michael 一邊朗讀誓詞一邊簽下 Daffy Duck，等於當面嗆 Mr. Brown。Jim 的反應：<span class="line">He's gonna lose it when he reads that.</span>（他看到會氣炸。）你們筆記裡聽成「Donkey Duck」和「烤鴨」——正解是達菲鴨 🦆。</p>
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=NMJ5abap8-4" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/NMJ5abap8-4/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE · Warner 官方</span><b>經典達菲鴨精選</b><span>華納官方頻道的 Daffy Duck 合輯，看兩分鐘就懂這隻鴨的形象</span></span>
+            </a>
+          </div>
+          <p class="wiki-min">補充：<a href="https://zh.wikipedia.org/wiki/達菲鴨" target="_blank">達菲鴨（中文維基）</a></p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Girl Scouts ＆ pledge</span><span class="zh">女童軍與宣誓</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>美國女童軍入團要念誓詞（pledge）。Michael 說 <span class="line">Who are we, the Girl Scouts?</span>，意思是「簽什麼團體誓約，我們是女童軍嗎？」——嘲諷這種形式主義很幼稚。pledge 這個字本集出現多次：當名詞是「誓約」，當動詞是「發誓、承諾」（I pledge to...）。</p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">假的林肯名言</span><span class="zh">Abraham Lincoln＋南北戰爭</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>Michael 自製影片裡引用「林肯說過：如果你是種族主義者，我會用北方攻打你」。笑點：林肯確實領導北方（the North）打贏南北戰爭、廢除奴隸制，但這句「名言」文法彆扭、一聽就是 Michael 現編的。這是本劇常見套路——Michael 愛引用名人名言，而且幾乎都是錯的或編的。</p>
+          <p class="wiki-min">補充：<a href="https://zh.wikipedia.org/wiki/南北戰爭" target="_blank">南北戰爭（中文維基）</a></p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Martin Luther King Jr.</span><span class="zh">「I have a dream」被亂用</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>金恩博士的〈I Have a Dream〉是美國民權運動最神聖的演講。Michael 在解說貼卡片遊戲規則時說 <span class="line">I have a dream that you will really let the sparks fly</span>——把民權演講的開頭接上「希望你們互相講刻板印象、擦出火花」，神聖與低級的落差就是笑點。let the sparks fly 字面是「讓火花四射」，引申為「放手衝突／來點火爆的」。</p>
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=Bw5GuCmmc2A" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/Bw5GuCmmc2A/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>〈I Have a Dream〉完整演講</b><span>1963 年華盛頓林肯紀念堂前，20 世紀最著名的演講，聽力練習神教材</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=iqVPhKMFJTQ" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/iqVPhKMFJTQ/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>Chris Rock：MLK 大道段子</b><span>Michael 說「我不會講這段」的那段原版：金恩主張非暴力，但叫 MLK 的街上總在發生暴力</span></span>
+            </a>
+          </div>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">collard greens ＆ soul food</span><span class="zh">你們字幕聽到的「colored greens」之謎</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>collard greens（羽衣甘藍葉）是美國南方非裔「靈魂食物」(soul food) 的代表菜。Michael 想說「早知道準備各族群的食物」，卻把 collard 講成 <b>colored</b>（有色的）——colored people 是歷史上對黑人的歧視性稱呼，現在是禁語。Stanley 糾正他是 collard greens，Michael 反而回嘴：「那不合理啊，你又不會叫他們 colored people，那很冒犯。」——他以為自己在糾正別人歧視，其實歧視的正是他自己，全劇最經典的反諷結構。同場還點名 burritos（墨西哥捲餅→Oscar）和 pad thai（泰式炒河粉），一樣是用食物貼族群標籤。</p>
+          <p class="wiki-min">補充：<a href="https://en.wikipedia.org/wiki/Collard_greens" target="_blank">Collard greens</a>｜<a href="https://en.wikipedia.org/wiki/Soul_food" target="_blank">Soul food</a></p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">印度便利商店刻板印象</span><span class="zh">googie googie 那段</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>Michael 對遲到的 Kelly（印裔美國人）即興模仿「印度口音便利商店老闆」，推銷不存在的食物 googie googie——這是在惡搞美式流行文化裡最著名的印度刻板印象：《辛普森家庭》便利商店老闆 Apu（這個角色後來也因刻板印象爭議退場）。Kelly 甩了他一巴掌，Michael 卻得意總結：「很好，她現在知道當少數族群是什麼感覺了。」——完全搞不清楚被打的原因。</p>
+          <div class="vids">
+            <a class="vid" href="https://www.youtube.com/watch?v=W5RhL7TupBM" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/W5RhL7TupBM/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>被 Kelly 打巴掌的完整片段</b><span>重看一次：Michael 的口音模仿＋巴掌＋歪掉的結論</span></span>
+            </a>
+            <a class="vid" href="https://www.youtube.com/watch?v=7s7YR9wS8eg" target="_blank">
+              <span class="thumb"><img src="https://img.youtube.com/vi/7s7YR9wS8eg/hqdefault.jpg" alt=""><span class="play"></span></span>
+              <span class="vmeta"><span class="yt">YOUTUBE</span><b>辛普森家庭：Apu 與 Kwik-E-Mart</b><span>Michael 在模仿的刻板印象原型，看過就秒懂這個梗的來源</span></span>
+            </a>
+          </div>
+          <p class="wiki-min">補充：<a href="https://en.wikipedia.org/wiki/Apu_Nahasapeemapetilon" target="_blank">Apu（Wikipedia）</a>——這個角色 2020 年後也因刻板印象爭議由原配音員請辭</p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">「too soon」＋ Arab 梗</span><span class="zh">911 後的敏感神經</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>本集播出於 2005 年，離 911 事件只有四年。Michael 說他故意沒把「阿拉伯人」做成卡片，因為 <span class="line">too explosive</span>——explosive 一語雙關（①話題太爆炸性 ②真的會爆炸），他還補一句 <span class="line">no pun intended</span>（我不是故意雙關喔），但這個雙關明明就是故意的。<b>too soon</b> 是美式喜劇術語：悲劇發生後太快拿來開玩笑，觀眾會覺得「傷口還沒好，現在講太早」。最後他說 <span class="line">the ball's in their court</span>（球在他們那邊＝主動權在對方，看他們表現）。</p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">melting pot</span><span class="zh">大熔爐</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>形容美國是各族群「熔」在一起的大熔爐，是很老派的比喻（現在較常講 salad bowl，強調各族群保有特色）。Michael 逼 Pam 玩遊戲時喊 <span class="line">Stir the melting pot!</span>（來攪動熔爐吧！）＝快講出刻板印象、讓場面火爆起來。搭配 <span class="line">Let's get ugly. Let's get real.</span>（來點難看的、來點真實的。）</p>
+          <p class="wiki-min">補充：<a href="https://en.wikipedia.org/wiki/Melting_pot" target="_blank">Melting pot（Wikipedia）</a></p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">額頭卡片遊戲裡的刻板印象</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>規則：每人額頭貼一張「種族卡」，自己看不到，別人要「把你當那個種族對待」，讓你猜。幾個你們可能沒跟上的點：</p>
+          <p>• Dwight 的卡是 <b>Asian</b>。Meredith 提示「很多文化都吃飯，幫不了我」沒中，Pam 再提示 <span class="line">I like your food</span>，Dwight 卻猜「Outback Steakhouse，我是澳洲人吧 mate！」——Outback 是「澳洲主題」的美式連鎖牛排館，其實跟澳洲沒什麼關係，所以這個猜測蠢兩層。Pam 又被逼提示「你可能不太會開車」（亞洲人不會開車的歧視梗），Dwight 竟回 <span class="line">Am I a woman?</span>——一次踩兩個族群。而 Michael 給自己挑的卡不是抽的，是他自選的 <b>Martin Luther King Jr.</b>——他把自己放在民權英雄的位置主持這場災難，本身就是笑點。</p>
+          <p>• Angela 的卡是 <b>Jamaican</b>（牙買加人）。拿到 Italian 卡的 Kevin 用刻板印象給她提示：先問「要不要去海灘？」（牙買加＝加勒比海度假勝地），再問 <span class="line">You want to get high?</span>——get high 是「嗑藥嗨起來」的俚語，影射「牙買加人都抽大麻」的刻板印象（來自雷鬼樂與 Rastafari 拉斯塔法里文化中大麻的形象）。一板一眼的虔誠教徒 Angela 冷臉拒絕，Kevin 小聲補刀 <span class="line">I think you do, mon.</span>——<b>mon</b> 是牙買加腔的 man（老兄），你們筆記聽成 mom（媽），其實是 mon！由全劇最保守的 Angela 被指定演「愛嗨的牙買加人」，反差就是笑點。</p>
+          <p>• 順帶解答你們可能卡住的另一小段：Ryan 在 Pam 的電腦上看網路搞笑短片，說「她很正」(she's cute)，Jim 緊張地回「她訂婚了」——以為 Ryan 在說 Pam，結果 Ryan 說的是<b>影片裡的女生</b>。這是 Jim 暗戀 Pam 的又一個小暗示。</p>
+          <p>• Pam 的卡是 <b>Jewish</b>（猶太人）。Dwight 對她說 shalom（希伯來語的你好/平安）並「想申請貸款」——影射「猶太人＝放貸/金融」的古老反猶刻板印象。這段的黑色幽默在於：遊戲規則本身就是逼大家把最醜的刻板印象講出口。</p>
+          <p>• Michael 對兩位同事說「奴隸制 vs. 猶太大屠殺，苦難的奧運會！」(<span class="line">Olympics of suffering</span>)——把兩大歷史悲劇當比賽，冒犯度爆表。</p>
+          <p>• Stanley（黑人）拿到的卡就是 <b>Black</b>，全場沒人敢跟他互動，本身就是一個無聲笑點。</p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Indian：印地安？印度？</span><span class="zh">你們當場討論的那題</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>你們的直覺是對的：英文的 <b>Indian</b> 同時指「印度人」和「美洲原住民」。因為哥倫布 1492 年抵達美洲時，以為自己到了印度，就把原住民叫 Indians，這個誤稱沿用了幾百年。現在正式用語是 <b>Native American</b>（美洲原住民），要指印度人時常說 Indian（from India）或 South Asian 來區分。Michael 自稱 <span class="line">part Native American Indian</span>，還說血統是 2/15——血統只能是 1/2、1/4、1/8、1/16…（每往上一代除以 2），<b>2/15 在數學上不可能</b>，所以 Oscar 吐槽 that fraction doesn't make any sense，證明 Michael 在瞎掰。</p>
+        </div>
+      </details>
+
+      <details class="icard"><summary><span class="term">Diversity training ＆ corporate</span><span class="zh">美國企業文化背景</span><span class="flip">詳解</span></summary>
+        <div class="body">
+          <p>美國公司有人被申訴歧視言論時，HR/總部常見的處理方式就是強制上「敏感度訓練」。劇中 corporate 指公司總部（相對於 Scranton 分公司），mandate 是「強制規定」。Michael 嘴硬說多元日是他一直想推的，總部只是 <span class="line">beat me to the punch</span>（搶先我一步），還罵總部 bastards——下一秒又說「但我本來就要做」。這種「先否認、再邀功」是 Michael 的招牌說話模式。</p>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ================= VOCAB ================= -->
+  <section id="vocab">
+    <div class="sec-head"><span class="tag">03</span><h2>單字片語索引卡</h2></div>
+    <p class="sec-note">依劇情順序排列。<span class="who">紅字</span>＝說這句話的角色；黃底＝劇中原句（短句）。點卡片翻面看詳解。</p>
+    <div class="cards">
+
+      <details class="icard"><summary><span class="term">tit for tat</span><span class="zh">以牙還牙</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　正確片語是 tit for tat（一報還一報），Michael 講成 <span class="line">tit for tit</span>，Jim 冷冷糾正：那不是那個片語。Michael 回 <span class="line">Well, it should be.</span>（那它應該是。）——死不認錯。同義字：retaliation（報復，正式用語）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">post-consumer content</span><span class="zh">消費後回收成分</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">JIM</span>　再生紙術語：由消費者用過的回收紙製成的比例。100% post-consumer ＝ 全回收再生紙。搭配 sturdy（堅固耐用的）形容紙質。Jim 這年要 push（推銷）再生紙、多賺 1%，自嘲 <span class="line">getting cocky</span>（開始臭屁／得意忘形了）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">commission / renew / close</span><span class="zh">佣金 / 續約 / 成交</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">JIM</span>　業務三件套（跟 Katty 的 BD 日常完全對得上）：commission 佣金；renew their account 幫客戶續約；close a sale 成交。Jim 說這通電話佔他 <span class="line">25% of my commission for the whole year</span>。結尾客戶說已經跟別人買了，Jim 問 <span class="line">what code were you given?</span>（你拿到的是哪個業務代碼？）才發現是 Dwight 搶單還 gave a discount（給了折扣）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">FreeCell / Solitaire</span><span class="zh">新接龍 / 接龍</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">JIM→PAM</span>　Windows 內建紙牌遊戲。Jim 瞄到 Pam 在玩，問「Solitaire?」Pam 答「Yeah, FreeCell.」（新接龍）。Jim 說他最喜歡牌全部排完、嘩啦跳出來的動畫。你們聽到的「free sale」其實是 FreeCell。這是兩人日常放閃的小橋段。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">first-name basis</span><span class="zh">熟到直呼其名</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　be on a first-name basis with sb ＝ 熟到可以叫名字不叫姓。Michael 介紹 Oscar 時連人家姓 Martinez 都不知道，還自豪地說我們是 first-name basis——其實是根本不熟，反話笑點。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">wrap it up</span><span class="zh">收尾、快結束</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL→JIM</span>　口語常用：把事情收個尾。Michael 催 Jim 掛電話來上課。Jim 求情喊客戶名字，Michael 回 <span class="line">It's diversity day, Jim.</span> 還補一句願望式名言「真希望每天都是多元日」。開會時主持人說 let's wrap it up 就是「準備收了」。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">colorblind</span><span class="zh">（種族議題的）色盲論</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　字面是色盲，在種族議題裡指「我不看膚色、假裝差異不存在」的態度。Michael 宣布這裡是 color-free zone、對 Stanley 說「我不把你看作另一個種族」。Mr. Brown 藉機教學：我們不必假裝 colorblind——否認差異不等於尊重差異。名句：用更多無知去對抗無知（fighting ignorance with more ignorance）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">steer away from</span><span class="zh">避開（話題）</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　steer 是掌舵，steer away from ＝ 繞開某話題。Michael 偷偷要求課程「避開同志話題」，Mr. Brown 打臉：那是 orientation（性傾向），不是 race（種族）；而且很多種族本身也不容忍同志——所以 Michael 的要求自相矛盾，這就是 Dwight 補刀的那個字：<b>paradox</b>（悖論）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">file a complaint</span><span class="zh">提出申訴</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MR. BROWN</span>　file 當動詞＝正式提交（文件）。file a complaint to corporate ＝ 向總部申訴。同場加映：incident（事件）、offensive（冒犯的）、reenact（重演事發經過）、<span class="line">pull this off</span>（成功搞定某件難事）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">butcher（動詞）</span><span class="zh">搞砸、糟蹋</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　butcher 本義是屠夫，當動詞＝把事情做得慘不忍睹（尤其指表演、發音、翻譯）。Kevin 面無表情地重演 Chris Rock 段子，Michael 受不了：<span class="line">He's butchering it!</span> 然後自己搶回來演，正好當場重現他被申訴的行為。旁白吐槽 Kevin：<span class="line">not much of an entertainer</span>（不太算是個表演咖）——「not much of a + 名詞」是很好用的委婉貶低句型。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">acronym：HERO</span><span class="zh">首字母縮寫</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MR. BROWN</span>　acronym＝把每個字首字母拼成的縮寫字。課程口號 HERO ＝ <b>H</b>onesty 誠實、<b>E</b>mpathy 同理、<b>R</b>espect 尊重、<b>O</b>pen-mindedness 開放心態。Dwight 舉手抗議：英雄要「殺想傷害他的人」、要有 childhood trauma（童年創傷）、要 be avenged（被復仇）——Mr. Brown：你說的是 superhero（超級英雄）。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">candidly</span><span class="zh">坦白地、開誠布公地</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MR. BROWN</span>　<span class="line">Can I talk to you candidly?</span>＝我能跟你打開天窗說亮話嗎？（把 Michael 拉到一邊私談的開場白。）candid 是形容詞：坦率的；candid photo 另指不擺拍的側拍照。商務上要講重話前很常用這句開場。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">throw someone off</span><span class="zh">讓人失常、亂了陣腳</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　Michael 反過來「安慰」Mr. Brown：我們辦公室的種族意識太先進了，<span class="line">that's probably throwing you off</span>（大概讓你不太適應）。Mr. Brown 面無表情回：It's not throwing me. I need your signature.——公事公辦四連發，只差你的簽名。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">lose it</span><span class="zh">抓狂、失控</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">JIM</span>　lose it ＝ lose one's temper/composure，理智線斷掉。Jim 看到 Daffy Duck 簽名說 <span class="line">He's gonna lose it</span>（他會氣炸）。日常例句：When I saw the invoice, I almost lost it.</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">get down to business</span><span class="zh">言歸正傳、進入正題</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　開會超常用。Michael 下午場的開場白，另外還說了 <span class="line">cop a squat</span>（俚語：找地方坐下）和 cornerstone（基石）：多元是進步的基石——他堅稱這句是他的名言。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">connotation</span><span class="zh">言外之意、隱含意涵</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL vs OSCAR</span>　字的弦外之音（相對於 denotation 字面義）。Michael 問 Oscar：有沒有比 Mexican「更不冒犯」的說法？Oscar：Mexican 不冒犯。Michael：在某些 connotations（語感）下……Oscar 步步進逼：<span class="line">What connotations, Michael?</span>——逼他說出心裡的偏見。Michael 只能用課程口號 Honesty… Empathy… Respect… 尷尬逃走。這段是「自以為體貼、實則歧視」的教科書。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">stereotype / stereotypical</span><span class="zh">刻板印象（的）</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">PAM 等</span>　本集關鍵字。Pam 被逼玩遊戲時先打預防針：「如果非玩不可，根據這些我完全不同意、也不是事實的刻板印象……你可能不太會開車。」Dwight 也說 <span class="line">Do something stereotypical so I can guess</span>（做點刻板印象的事讓我猜）。動詞用法：stereotype sb ＝ 給某人貼標籤。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">show someone up</span><span class="zh">讓某人相形見絀、下不了台</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">MICHAEL</span>　Michael 幻想若準備了各族食物，就能 <span class="line">show him up</span>（把 Mr. Brown 比下去、讓他難堪）。注意跟 show up（出現、出席）意思完全不同——多一個受詞位置差很多。同場：take off ①脫掉（額頭卡片）②下班離開，Michael 對 Kevin 說 you can take that off 是叫他把卡片拿下來。</p></div>
+      </details>
+
+      <details class="icard"><summary><span class="term">I don't blame you</span><span class="zh">我不怪你／換作是我也會</span><span class="flip">翻面</span></summary>
+        <div class="body"><p><span class="who">JIM</span>　聽到客戶因為折扣跟 Dwight 成交，Jim 說 <span class="line">No, I don't blame you.</span>——表面大度，其實是整集委屈的總結。這句在日常裡超實用：對方做了讓你受傷但合理的決定時，用它表達「可以理解」。</p></div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ================= GRAMMAR ================= -->
+  <section id="grammar">
+    <div class="sec-head"><span class="tag">04</span><h2>文法角落</h2></div>
+    <p class="sec-note">全部取自本集實際句型，改寫成可以直接套用的模板。</p>
+
+    <div class="gram"><b class="pat">should have + p.p.</b>　「早該做而沒做」的懊悔。Dwight 碎紙時說他幾週前就該做這件事了：I should have done this weeks ago. 套用：We should have signed the contract before issuing the invoice.（呼應你們「發票日不能早於簽約日」的原則 😄）</div>
+
+    <div class="gram"><b class="pat">until you do（代動詞 do）</b>　Mr. Brown：I can't leave until you do.＝until you <i>sign</i>。用 do 代替前面出現過的動詞，避免重複。套用：I won't send it until you do.（你确认之前我不会寄出。）</div>
+
+    <div class="gram"><b class="pat">Yours is the only + N + (that) I need</b>　所有格代名詞當主詞＋省略關代。Mr. Brown：你的才是我唯一需要的簽名。套用：Yours is the only approval we're waiting for.</div>
+
+    <div class="gram"><b class="pat">It would (also) help if you + 過去式</b>　假設語氣的超客氣請求。Mr. Brown 請 Michael 別搶主持：如果你「接受」這件事會更有幫助。比 Please accept it 委婉一大截，寫商務 email 很好用：It would help if you could confirm by Friday.</div>
+
+    <div class="gram"><b class="pat">I would love to have your permission to + V</b>　把「請你閉嘴讓我主持」包裝成敬語的極致範例。談判時要拿回主導權可以學：I'd love to have your permission to walk you through our proposal.</div>
+
+    <div class="gram"><b class="pat">How come + 主詞 + 動詞？</b>　口語版的 why，後面用直述句語序（不倒裝）。Michael：How come Chris Rock can do a routine and…? 注意對比：Why can he…? / How come he can…?</div>
+
+    <div class="gram"><b class="pat">not much of a + 名詞</b>　委婉說「不太行」。Kevin is not much of an entertainer. 套用：I'm not much of a morning person.（我不太是晨型人。）</div>
+  </section>
+
+  <!-- ================= MISHEAR ================= -->
+  <section id="mishear">
+    <div class="sec-head"><span class="tag">05</span><h2>聽力糾錯區</h2></div>
+    <p class="sec-note">你們筆記／字幕裡出現的誤聽 vs. 正確版本。有幾個是 Michael「故意講錯」的哏，聽錯反而代表你聽對了他的錯 😆</p>
+    <table class="mh">
+      <tr><th>聽到的</th><th>正確版本</th><th>說明</th></tr>
+      <tr><td>tit for tit / dit for dit</td><td>tit for tat</td><td>Michael 真的講錯成 tit for tit，Jim 有糾正。片語本尊是 tit for tat（以牙還牙）。</td></tr>
+      <tr><td>Donkey Duck</td><td>Daffy Duck</td><td>達菲鴨，華納卡通角色，不是烤鴨。</td></tr>
+      <tr><td>free sale</td><td>FreeCell</td><td>Windows 的「新接龍」，Pam 上班偷玩的遊戲。</td></tr>
+      <tr><td>colored greens</td><td>collard greens</td><td>這個是 Michael 自己講錯的哏：collard（羽衣甘藍）↔ colored（歧視用語）。Stanley 糾正了他。</td></tr>
+      <tr><td>要挑選 (getting…?)</td><td>getting cocky</td><td>cocky＝臭屁、自信過頭。Jim 自嘲今年還想多推 1% 的再生紙。</td></tr>
+      <tr><td>I think you do, mom</td><td>I think you do, mon</td><td>mon＝牙買加腔的 man（老兄）。Kevin 在對「牙買加卡」的 Angela 演刻板印象，不是在叫媽媽。</td></tr>
+      <tr><td>attack you with the north（不是聽錯）</td><td>—</td><td>真的就是這樣講。假名言，本來就不通順，聽不懂是正常的。</td></tr>
+      <tr><td>2/15（不懂笑點）</td><td>—</td><td>血統只能是 1/2、1/4、1/8…，2/15 不可能存在 → Michael 在瞎掰。</td></tr>
+    </table>
+  </section>
+
+  <!-- ================= QUIZ ================= -->
+  <section id="quiz">
+    <div class="sec-head"><span class="tag">06</span><h2>隨堂小測</h2></div>
+    <p class="sec-note">下次看片前互考。點題目看答案。</p>
+
+    <details class="quiz"><summary><span class="qn">Q1</span>「以牙還牙」的正確英文片語是？Michael 講成什麼？</summary>
+      <div class="ans">正確是 <b>tit for tat</b>；Michael 講成 tit for tit，被 Jim 糾正後還嘴硬 "Well, it should be."</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q2</span>HERO 四個字母各代表什麼？Dwight 覺得少了什麼？</summary>
+      <div class="ans"><b>Honesty、Empathy、Respect、Open-mindedness</b>。Dwight 認為英雄還得殺敵、有童年創傷、要復仇——被指出那是 superhero。</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q3</span>Mr. Brown 其實只需要誰的簽名？Michael 最後簽了什麼名字？</summary>
+      <div class="ans">只需要 <b>Michael</b> 的（因為申訴對象就是他，發給全辦公室只是給他台階下）。他簽了 <b>Daffy Duck</b>（達菲鴨）。</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q4</span>為什麼「2/15 Native American」是笑點？</summary>
+      <div class="ans">血統比例每上一代除以二，只可能是 1/2、1/4、1/8、1/16…，<b>2/15 在數學上不存在</b>，代表 Michael 隨口瞎掰。</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q5</span>collard greens 是什麼？Michael 把它講成什麼、為何糟糕？</summary>
+      <div class="ans">美國南方靈魂食物的<b>羽衣甘藍葉</b>。他講成 colored greens——colored 是對黑人的歷史歧視稱呼，而他還反過來「糾正」Stanley，反諷全開。</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q6</span>"The ball is in their court." 是什麼意思？</summary>
+      <div class="ans">源自網球：球在對方半場 → <b>主動權／下一步在對方</b>。Michael 用它說「要不要開阿拉伯人的玩笑，就看他們（阿拉伯世界）的表現了」——用法正確，內容離譜。</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q7</span>Jim 的年度大單最後怎麼了？他回了哪句話？</summary>
+      <div class="ans">被 <b>Dwight 搶走</b>還給了折扣（占 Jim 全年佣金 25%）。Jim 說 <b>"I don't blame you."</b>（我不怪你。）</div></details>
+
+    <details class="quiz"><summary><span class="qn">Q8</span>老闆要你把電話「收尾」，會說哪個片語？想客氣地說「如果你能週五前確認會很有幫助」呢？</summary>
+      <div class="ans"><b>Wrap it up.</b>／<b>It would help if you could confirm by Friday.</b>（假設語氣客氣句型）</div></details>
+  </section>
+
+  <footer>DIVERSITY TOMORROW — BECAUSE TODAY IS ALMOST OVER · 講義完</footer>
+</div>
+</body>
+</html>
