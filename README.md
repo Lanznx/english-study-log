@@ -2,6 +2,10 @@
 
 英文學習記錄——以觀影講義為主的英文筆記，按日期累積。
 
+🔗 **線上閱讀（GitHub Pages）**：https://pathorsai.github.io/english-study-log/
+
+新增講義時記得同步更新 [index.html](index.html) 的目錄卡片與下方目錄表格。
+
 ## 檔名慣例
 
 ```
